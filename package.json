@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "type": "module",
   "packageManager": "bun@1.2.18",
+  "author": "Burakhan Unver <burakhanunver@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",
