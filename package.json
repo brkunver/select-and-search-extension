@@ -1,9 +1,10 @@
 {
-  "name": "wxt-starter",
-  "description": "manifest.json description",
+  "name": "select-and-search",
+  "description": "Select and Search on Google",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "bun@1.2.18",
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",
