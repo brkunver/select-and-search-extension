@@ -1,4 +1,5 @@
 import "./search-btn.css"
+import { engineStorage, urlStorage } from "@/storage"
 
 export default defineContentScript({
   matches: ["<all_urls>"],
@@ -6,6 +7,21 @@ export default defineContentScript({
     const searchBtn: HTMLDivElement = document.createElement("div")
     searchBtn.textContent = "Search on Google"
     searchBtn.classList.add("search-btn")
+
+    engineStorage.getValue().then(value => {
+      const buttonContent = "Search on " + value
+      searchBtn.textContent = buttonContent
+    })
+
+    engineStorage.watch(value => {
+      const buttonContent = "Search on " + value
+      searchBtn.textContent = buttonContent
+    })
+
+    let searchQuery: string = "https://www.google.com/search?q="
+    urlStorage.watch(value => {
+      searchQuery = value
+    })
 
     document.body.appendChild(searchBtn)
 
@@ -34,7 +50,7 @@ export default defineContentScript({
       // on click, perform Google search in a new tab
       searchBtn.onclick = () => {
         const query = encodeURIComponent(text)
-        window.open(`https://www.google.com/search?q=${query}`, "_blank")
+        window.open(`${searchQuery}${query}`, "_blank")
         searchBtn.style.display = "none"
       }
     })
