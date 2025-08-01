@@ -16,7 +16,7 @@
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
     "postinstall": "wxt prepare",
-    "manager": "bun manager.cjs bun"
+    "manager": "bun run --bun manager.cjs bun"
   },
   "devDependencies": {
     "typescript": "^5.8.3",
