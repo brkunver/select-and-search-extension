@@ -1,0 +1,137 @@
+body {
+  background: #f5f6fa;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-block: 8px;
+  padding-inline: 4px;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  min-width: 260px;
+  min-height: 110px;
+  color: #23272f;
+}
+
+#popup {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px 0 rgba(44, 62, 80, 0.10);
+  padding: 18px 22px 16px 22px;
+  margin: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.engine-card {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-direction: column;
+}
+
+#popup p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #23272f;
+}
+
+#engine {
+  font-weight: 600;
+  color: #377dff;
+  background: #f1f6ff;
+  padding: 1px 7px;
+  border-radius: 6px;
+  margin-left: 3px;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+select {
+  margin-top: 4px;
+  margin-inline: auto;
+  text-align: center;
+  padding: 7px 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #23272f;
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  box-shadow: 0 1px 4px 0 rgba(44,62,80,0.03);
+  appearance: none;
+}
+
+select:focus {
+  border-color: #377dff;
+  box-shadow: 0 0 0 2px #e6f0ff;
+}
+
+select:hover {
+  border-color: #b6c3d3;
+}
+
+option {
+  background: #fff;
+  color: #23272f;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #181c20;
+    color: #f1f4fa;
+  }
+  #popup {
+    background: #23272f;
+    box-shadow: 0 2px 12px 0 rgba(20, 24, 36, 0.18);
+  }
+  #popup p {
+    color: #f1f4fa;
+  }
+  #engine {
+    color: #7bb2ff;
+    background: #232e3a;
+  }
+  select {
+    background: #23272f;
+    color: #f1f4fa;
+    border: 1.5px solid #353b46;
+    box-shadow: 0 1px 8px 0 rgba(20,24,36,0.10);
+  }
+  select:focus {
+    border-color: #7bb2ff;
+    box-shadow: 0 0 0 2px #23334d;
+  }
+  select:hover {
+    border-color: #3f4a5a;
+  }
+  option {
+    background: #23272f;
+    color: #f1f4fa;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #181c20;
+    color: #f1f4fa;
+  }
+  #popup {
+    background: #23272f;
+    box-shadow: 0 2px 12px 0 rgba(20, 24, 36, 0.18);
+  }
+  #popup p {
+    color: #f1f4fa;
+  }
+  #engine {
+    color: #7bb2ff;
+    background: #232e3a;
+  }
+}
