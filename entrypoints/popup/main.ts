@@ -1,4 +1,5 @@
 import { engineStorage, urlStorage } from "../../storage"
+import "./index.css"
 const searchEngines = [
   {
     name: "Google",
