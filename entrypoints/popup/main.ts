@@ -16,6 +16,13 @@ const searchEngines = [
 
 let optionSelector = document.createElement("select") as HTMLSelectElement
 
+for (let engine of searchEngines) {
+  let option = document.createElement("option")
+  option.value = engine.url
+  option.textContent = engine.name
+  optionSelector.appendChild(option)
+}
+
 // set default value
 engineStorage.getValue().then(value => {
   document.getElementById("engine")!.textContent = value
@@ -28,15 +35,6 @@ urlStorage.watch(value => {
   optionSelector.value = value
 })
 
-for (let engine of searchEngines) {
-  let option = document.createElement("option")
-  option.value = engine.url
-  option.textContent = engine.name
-  optionSelector.appendChild(option)
-}
-
-document.body.appendChild(optionSelector)
-
 optionSelector.onchange = (e: Event) => {
   const selectedUrl = (e.target as HTMLSelectElement).value
   const selectedEngine = searchEngines.find(engine => engine.url === selectedUrl)?.name
@@ -44,3 +42,5 @@ optionSelector.onchange = (e: Event) => {
   engineStorage.setValue(selectedEngine!)
   urlStorage.setValue(selectedUrl)
 }
+
+document.body.appendChild(optionSelector)
