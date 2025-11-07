@@ -52,10 +52,16 @@ export default defineContentScript({
       const range = selection.getRangeAt(0)
       const rect = range.getBoundingClientRect()
 
+      // Reset position styles
+      searchBtn.style.left = ""
+      searchBtn.style.right = ""
+      searchBtn.style.top = ""
+      searchBtn.style.bottom = ""
+
       // position the button just above the selected text
       if (location == "tooltip") {
-        searchBtn.style.top = `${rect.top + window.scrollY - 30}px`
-        searchBtn.style.left = `${rect.left + window.scrollX}px`
+        searchBtn.style.top = `${rect.top - 30}px`
+        searchBtn.style.left = `${rect.left}px`
         searchBtn.style.display = "block"
       } else if (location == "top-left") {
         searchBtn.style.top = `20px`
