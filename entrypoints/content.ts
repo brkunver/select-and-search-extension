@@ -1,5 +1,5 @@
 import "./search-btn.css"
-import { engineStorage, urlStorage } from "@/storage"
+import { engineStorage, urlStorage, buttonLocation, ButtonLocation } from "@/storage"
 
 export default defineContentScript({
   matches: ["<all_urls>"],
@@ -7,6 +7,16 @@ export default defineContentScript({
     const searchBtn: HTMLDivElement = document.createElement("div")
     searchBtn.textContent = "Search on Google"
     searchBtn.classList.add("search-btn")
+
+    let location: ButtonLocation
+
+    buttonLocation.getValue().then(value => {
+      location = value
+    })
+
+    buttonLocation.watch(value => {
+      location = value
+    })
 
     engineStorage.getValue().then(value => {
       const buttonContent = "Search on " + value
@@ -43,9 +53,27 @@ export default defineContentScript({
       const rect = range.getBoundingClientRect()
 
       // position the button just above the selected text
-      searchBtn.style.top = `${rect.top + window.scrollY - 30}px`
-      searchBtn.style.left = `${rect.left + window.scrollX}px`
-      searchBtn.style.display = "block"
+      if (location == "tooltip") {
+        searchBtn.style.top = `${rect.top + window.scrollY - 30}px`
+        searchBtn.style.left = `${rect.left + window.scrollX}px`
+        searchBtn.style.display = "block"
+      } else if (location == "top-left") {
+        searchBtn.style.top = `20px`
+        searchBtn.style.left = `20px`
+        searchBtn.style.display = "block"
+      } else if (location == "top-right") {
+        searchBtn.style.top = `20px`
+        searchBtn.style.right = `20px`
+        searchBtn.style.display = "block"
+      } else if (location == "bottom-left") {
+        searchBtn.style.bottom = `20px`
+        searchBtn.style.left = `20px`
+        searchBtn.style.display = "block"
+      } else if (location == "bottom-right") {
+        searchBtn.style.bottom = `20px`
+        searchBtn.style.right = `20px`
+        searchBtn.style.display = "block"
+      }
 
       // on click, perform Google search in a new tab
       searchBtn.onclick = () => {
