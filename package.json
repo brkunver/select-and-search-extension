@@ -2,7 +2,7 @@
   "name": "select-and-search",
   "description": "Select and Search on Google",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "packageManager": "bun@1.2.18",
   "author": "Burakhan Unver <burakhanunver@gmail.com>",

@@ -1,19 +1,21 @@
 .search-btn {
-    position: absolute;
-    display: none;
-    background: #0d0d0d;
-    color: #f0f0f0;
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 14px;
-    z-index: 999999;
-    cursor: pointer;
-    font-family: sans-serif;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    transition: all 0.2s ease;
+  position: fixed;
+  display: none;
+  background: #0d0d0d;
+  width: fit-content;
+  height: fit-content;
+  color: #f0f0f0;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 999999;
+  cursor: pointer;
+  font-family: sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
 }
 
 .search-btn:hover {
-    background: #000000;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  background: #000000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
