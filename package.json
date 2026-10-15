@@ -14,7 +14,7 @@
     "build:firefox": "wxt build -b firefox",
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
-    "compile": "tsc --noEmit",
+    "compile": "bun check && bun run build",
     "postinstall": "wxt prepare",
     "manager": "bun run --bun manager.cjs bun",
     "format": "bun fmt",
