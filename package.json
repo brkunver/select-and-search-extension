@@ -4,7 +4,7 @@
   "private": true,
   "version": "1.2.1",
   "type": "module",
-  "packageManager": "bun@1.2.18",
+  "packageManager": "bun@1.4.4-canary.1",
   "author": "Burakhan Unver <burakhanunver@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -16,7 +16,9 @@
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
     "postinstall": "wxt prepare",
-    "manager": "bun run --bun manager.cjs bun"
+    "manager": "bun run --bun manager.cjs bun",
+    "format": "bun fmt",
+    "check": "bun check"
   },
   "devDependencies": {
     "typescript": "^5.8.3",
