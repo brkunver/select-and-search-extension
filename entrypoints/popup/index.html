@@ -3,14 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Popup</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Select and Search</title>
   </head>
   <body>
-    <div id="popup">
-      <p class="engine-card"><span>Current engine:</span> <span id="engine"></span></p>
-      <p class="button-location-card"><span>Button location:</span> <span id="button-location"></span></p>
+    <div class="app">
+      <header class="app-header">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M4 6h9" />
+            <path d="M4 11h13" />
+            <path d="M4 16h6" />
+            <circle cx="17.5" cy="16.5" r="3.5" />
+            <path d="M20 19l2.5 2.5" />
+          </svg>
+        </span>
+        <div class="brand-text">
+          <h1>Select and Search</h1>
+          <p>Search any text you select</p>
+        </div>
+      </header>
+
+      <main class="app-body">
+        <section class="card" aria-labelledby="site-heading">
+          <div class="site-row">
+            <div class="site-meta">
+              <h2 class="section-label" id="site-heading">This site</h2>
+              <p class="site-domain" id="site-domain">&mdash;</p>
+            </div>
+            <button
+              type="button"
+              class="switch"
+              id="site-toggle"
+              role="switch"
+              aria-checked="true"
+              aria-labelledby="site-heading site-domain"
+              disabled
+            >
+              <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+              <span class="switch-text" id="site-toggle-text">Checking&hellip;</span>
+            </button>
+          </div>
+          <p class="hint" id="site-hint">Reading the current tab&hellip;</p>
+
+          <div class="disabled-block" id="disabled-block" hidden>
+            <div class="disabled-head">
+              <span class="section-label">Disabled sites</span>
+              <span class="count" id="disabled-count">0</span>
+            </div>
+            <ul class="disabled-list" id="disabled-list"></ul>
+            <button type="button" class="link-button" id="disabled-clear">Re-enable all sites</button>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="engine-heading">
+          <h2 class="section-label" id="engine-heading">Search engine</h2>
+          <div class="select-wrap">
+            <select id="engine-select" aria-labelledby="engine-heading"></select>
+            <svg
+              class="select-chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </div>
+
+          <h2 class="section-label spaced" id="position-heading">Button position</h2>
+          <div class="position-grid" id="position-grid" role="group" aria-labelledby="position-heading">
+            <button type="button" class="position-option wide" data-location="tooltip" aria-pressed="false">
+              <span class="preview preview-tooltip" aria-hidden="true">
+                <span class="tag"></span>
+                <span class="line"></span>
+              </span>
+              <span class="option-label">Tooltip at selection</span>
+            </button>
+            <button type="button" class="position-option" data-location="top-left" aria-pressed="false">
+              <span class="preview" aria-hidden="true"><span class="dot"></span></span>
+              <span class="option-label">Top left</span>
+            </button>
+            <button type="button" class="position-option" data-location="top-right" aria-pressed="false">
+              <span class="preview" aria-hidden="true"><span class="dot"></span></span>
+              <span class="option-label">Top right</span>
+            </button>
+            <button type="button" class="position-option" data-location="bottom-left" aria-pressed="false">
+              <span class="preview" aria-hidden="true"><span class="dot"></span></span>
+              <span class="option-label">Bottom left</span>
+            </button>
+            <button type="button" class="position-option" data-location="bottom-right" aria-pressed="false">
+              <span class="preview" aria-hidden="true"><span class="dot"></span></span>
+              <span class="option-label">Bottom right</span>
+            </button>
+          </div>
+        </section>
+      </main>
     </div>
+
     <script src="./main.ts" type="module"></script>
   </body>
 </html>

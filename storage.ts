@@ -14,4 +14,13 @@ const urlStorage = storage.defineItem<string>("local:url", {
   fallback: "https://www.google.com/search?q=",
 })
 
-export { engineStorage, buttonLocation, urlStorage }
+/**
+ * Hostnames where the extension is switched off. A stored entry also covers its
+ * subdomains (see `domain.ts`), so `local:disabledDomains` holds e.g.
+ * `["notepad.js.org"]` after disabling the extension on https://notepad.js.org/.
+ */
+const disabledDomains = storage.defineItem<string[]>("local:disabledDomains", {
+  fallback: [],
+})
+
+export { engineStorage, buttonLocation, urlStorage, disabledDomains }

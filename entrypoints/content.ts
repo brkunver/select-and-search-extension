@@ -1,5 +1,6 @@
 import "./search-btn.css"
-import { engineStorage, urlStorage, buttonLocation, ButtonLocation } from "@/storage"
+import { engineStorage, urlStorage, buttonLocation, disabledDomains, ButtonLocation } from "@/storage"
+import { isDomainDisabled } from "@/domain"
 
 export default defineContentScript({
   matches: ["<all_urls>"],
@@ -25,6 +26,31 @@ export default defineContentScript({
     function showButton() {
       searchBtn.style.setProperty("display", "block", "important")
     }
+
+    // The popup can switch the extension off for this whole domain; the script
+    // still runs (it is statically registered on <all_urls>) but stays silent so
+    // the toggle takes effect without a reload.
+    let siteDisabled = false
+
+    function applyDisabledState(disabled: boolean) {
+      siteDisabled = disabled
+      if (disabled) {
+        hideButton()
+      }
+    }
+
+    disabledDomains
+      .getValue()
+      .then(list => {
+        applyDisabledState(isDomainDisabled(window.location.hostname, list))
+      })
+      .catch(error => {
+        console.error("Failed to read disabled domains", error)
+      })
+
+    disabledDomains.watch(list => {
+      applyDisabledState(isDomainDisabled(window.location.hostname, list))
+    })
 
     let location: ButtonLocation = "tooltip"
 
@@ -60,6 +86,11 @@ export default defineContentScript({
 
     // show button when user finishes text selection
     document.addEventListener("mouseup", () => {
+      if (siteDisabled) {
+        hideButton()
+        return
+      }
+
       const selection = window.getSelection()
       if (!selection) {
         hideButton()
